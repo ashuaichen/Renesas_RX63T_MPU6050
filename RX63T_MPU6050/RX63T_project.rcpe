@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<MicomToolCommonProjectFile Version="1.00">
+  <CreatorType Name="CubeSuite+" Version="V3.01.00  [19 Feb 2015]" />
+  <Placeholders>
+    <PlaceholderPrefix>%</PlaceholderPrefix>
+    <PlaceholderPostfix>%</PlaceholderPostfix>
+  </Placeholders>
+  <Project Name="RX63T_project" Type="Application">
+    <Files>
+      <Category Name="BSP">
+        <Category Name="I2C">
+          <Path>BSP\I2C\riic.c</Path>
+          <Path>BSP\I2C\riic.h</Path>
+        </Category>
+        <Category Name="UART">
+          <Path>BSP\UART\uart.c</Path>
+          <Path>BSP\UART\uart.h</Path>
+        </Category>
+      </Category>
+      <Category Name="INC">
+        <Path>vect.h</Path>
+        <Path>typedefine.h</Path>
+        <Path>stacksct.h</Path>
+        <Path>sbrk.h</Path>
+        <Path>qbrx63th_if.h</Path>
+        <Path>iodefine.h</Path>
+      </Category>
+      <Path>dbsct.c</Path>
+      <Path>hwsetup.c</Path>
+      <Path>intprg.c</Path>
+      <Path>main.c</Path>
+      <Path>resetprg.c</Path>
+      <Path>sbrk.c</Path>
+      <Path>vecttbl.c</Path>
+      <Path>lowsrc.c</Path>
+      <Path>lowsrc.h</Path>
+    </Files>
+    <Device Series="RX">R5F563TEAxFB</Device>
+    <BuildOptions Name="CC-RX" Version="V2.03.00">
+      <BuildMode Name="DefaultBuild" Active="True">
+        <GeneralOptions>
+          <SimultaneouslyBuild>true</SimultaneouslyBuild>
+        </GeneralOptions>
+        <CompileOptions>
+          <Option>-cpu=rx600</Option>
+          <Option>-lang=c</Option>
+          <Option>-include=BSP\UART</Option>
+          <Option>-include=eMPL</Option>
+          <Option>-include=.</Option>
+          <Option>-include=BSP\I2C</Option>
+          <Option>-output=obj</Option>
+          <Option>-debug</Option>
+          <Option>-optimize=0</Option>
+          <Option>-nologo</Option>
+        </CompileOptions>
+        <AssembleOptions>
+          <Option>-cpu=rx600</Option>
+          <Option>-output=%BuildModeName%\%FileLeaf%.obj</Option>
+          <Option>-nologo</Option>
+        </AssembleOptions>
+        <LinkOptions>
+          <Option>-output=%BuildModeName%\%ProjectName%.abs</Option>
+          <Option>-list=%BuildModeName%\%ProjectName%.map</Option>
+          <Option>-show=total_size</Option>
+          <Option>-nooptimize</Option>
+          <Option>-start=B_1,R_1,B_2,R_2,B,R,SU,SI/00000004,PResetPRG/FFF80000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/FFF81000,FIXEDVECT/0FFFFFFD0</Option>
+          <Option>-rom=D=R,D_1=R_1,D_2=R_2</Option>
+          <Option>-nologo</Option>
+          <Option>-end</Option>
+          <Option>-input=%BuildModeName%\%ProjectName%.abs</Option>
+          <Option>-output=%BuildModeName%\%ProjectName%.mot</Option>
+          <Option>-form=stype</Option>
+          <Option>-exit</Option>
+          <PreLinker>Auto</PreLinker>
+        </LinkOptions>
+        <LibraryGenerateOptions>
+          <Option>-cpu=rx600</Option>
+          <Option>-head=runtime,math,mathf,stdio,stdlib,string,new</Option>
+          <Option>-output=%BuildModeName%\%ProjectName%.lib</Option>
+          <Option>-nologo</Option>
+          <GenerateMode>BuildOptionChanged</GenerateMode>
+        </LibraryGenerateOptions>
+        <LinkOrder>
+          <Path>DefaultBuild\dbsct.obj</Path>
+          <Path>DefaultBuild\intprg.obj</Path>
+          <Path>DefaultBuild\resetprg.obj</Path>
+          <Path>DefaultBuild\main.obj</Path>
+          <Path>DefaultBuild\sbrk.obj</Path>
+          <Path>DefaultBuild\vecttbl.obj</Path>
+          <Path>DefaultBuild\hwsetup.obj</Path>
+          <Path>DefaultBuild\riic.obj</Path>
+          <Path>DefaultBuild\uart.obj</Path>
+          <Path>DefaultBuild\lowsrc.obj</Path>
+        </LinkOrder>
+        <CommonOptions>
+          <IncludePathForC>BSP\UART</IncludePathForC>
+          <IncludePathForC>eMPL</IncludePathForC>
+          <IncludePathForC>.</IncludePathForC>
+          <IncludePathForC>BSP\I2C</IncludePathForC>
+        </CommonOptions>
+      </BuildMode>
+    </BuildOptions>
+  </Project>
+</MicomToolCommonProjectFile>
